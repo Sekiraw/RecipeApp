@@ -1,0 +1,48 @@
+<div class="div-card" *ngIf="imageInput">
+  <mat-card fxLayout fxLayoutGap="20px">
+    <span fxFlex="1 1 50%">
+      <mat-card-header>
+        <mat-card-title>{{imageInput.user_name}}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <img class="galleryImage" [src]="loadedImage" />
+        <div>{{imageInput.user_name}}</div>
+<!--        <div class="break"></div>-->
+<!--        <div>{{imageInput.user_url}}</div>-->
+<!--        <div class="break"></div>-->
+<!--        <div>{{imageInput.photo_url}}</div>-->
+      </mat-card-content>
+    </span>
+
+    <span fxFlex="1 1 50%">
+      <mat-card-actions>
+        <form [formGroup]="commentsForm" (ngSubmit)="addComment()">
+          <div>
+            <mat-form-field>
+              <mat-label for="username">Username: </mat-label>
+              <!-- <input matInputtype="text" [(ngModel)]="commentObject['username']" /> -->
+              <input matInput type="text" formControlName="username" />
+            </mat-form-field>
+          </div>
+          <div class="break"></div>
+          <div>
+            <!-- <textarea rows="10" cols="50" [(ngModel)]="commentObject['comment']"></textarea> -->
+            <mat-form-field>
+              <mat-label for="comment">Comment: </mat-label>
+              <textarea matInput rows="10" cols="50" formControlName="comment"></textarea>
+            </mat-form-field>
+          </div>
+
+          <div class="break"></div>
+          <div>
+            <button mat-raised-button color="primary" type="submit">ADD</button>
+          </div>
+        </form>
+      </mat-card-actions>
+    </span>
+
+  </mat-card>
+</div>
+
+

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "recept-page"
+  },
+  "targets": {
+    "recept-page": {
+      "hosting": {
+        "week-04": [
+          "recept-page"
+        ]
+      }
+    }
+  }
+}
