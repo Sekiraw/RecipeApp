@@ -1,3 +1,44 @@
-<div class="main_component">
-    <h1>Welcome to my homepage!</h1>
+<ng-content></ng-content>
+
+<div class="main_component div-flex">
+  <mat-card class="div-flex">
+    <mat-card-header>
+      <mat-card-title>
+        <!-- insert stuff here  -->
+        <h3>Felhasználónév: {{uid}}</h3>
+        Saját receptjeim
+
+
+        <ul>
+          <li *ngFor='let doc of myArray'>
+            {{doc.field}}
+          </li>
+        </ul>
+
+
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+<!--      <p><mat-icon>call</mat-icon> +36 30 123 4567</p>-->
+<!--      <p><mat-icon>email</mat-icon> test@gmail.com</p>-->
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card class="div-flex">
+    <mat-card-header>
+      <mat-card-title>
+        Új recept feltöltése
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="input">
+      <mat-form-field><mat-label for="title">Cím: </mat-label><input matInput type="text" [formControl]="title" placeholder="Tőtöttkáposzta"/></mat-form-field>
+      <p></p>
+      <mat-form-field><mat-label for="content">Tartalom: </mat-label><textarea matInput type="text" [formControl]="content" rows="4" cols="50"></textarea></mat-form-field>
+      <p></p>
+      <span>
+        <span><button mat-raised-button color="warn" (click)="submit()">Közzététel</button></span>
+    </span>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -1,11 +1,36 @@
-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
+mat-card {
+  width: 60%;
+  height: 60%;
+  align-self: center;
+}
+
+mat-card-header {
+  align-self: center;
+  margin-top: 25px; //Mier nem mukodik
+}
+
+.div-flex {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  justify-content: left;
+  text-align: left;
+  height: 40%;
 }
 
 .main_component {
-    height: 100vh;
+  height: 100vh;
+}
+
+textarea {
+  width: 100%;
+}
+
+button {
+  align-self: center;
+}
+
+.input {
+  align-self: center;
 }

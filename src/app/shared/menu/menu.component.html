@@ -1,27 +1,31 @@
 <mat-nav-list>
+  <div>
+    <mat-icon>fastfood</mat-icon>
+    <span>OLDAL NEVE IDE</span>
+  </div>
   <a mat-list-item routerLink="/login" (click)="close()" *ngIf="!(loggedInUser)">
     <mat-icon>login</mat-icon>
-    <span>Login</span>
+    <span>Belépés</span>
   </a>
   <a mat-list-item routerLink="/login" (click)="close(true)" *ngIf="(loggedInUser)">
     <mat-icon>logout</mat-icon>
-    <span>Logout</span>
+    <span>Kilépés</span>
   </a>
-  <a mat-list-item routerLink="/signup" (click)="close()">
+  <a mat-list-item routerLink="/signup" (click)="close()" *ngIf="!(loggedInUser)">
     <mat-icon>app_registration</mat-icon>
-    <span>Register</span>
+    <span>Regisztráció</span>
   </a>
   <a mat-list-item routerLink="/main" (click)="close()">
-  <mat-icon>grid_view</mat-icon>
-  <span>Main</span>
+  <mat-icon>home</mat-icon>
+  <span>Főoldal</span>
 </a>
   <a mat-list-item routerLink="/gallery" (click)="close()">
   <mat-icon>collections</mat-icon>
-  <span>Gallery</span>
+  <span>Felfedezés</span>
 </a>
   <a mat-list-item routerLink="/contact" (click)="close()">
   <mat-icon>info</mat-icon>
-  <span>Contact</span>
+  <span>Információ</span>
 </a>
 </mat-nav-list>
 

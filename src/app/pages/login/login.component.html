@@ -3,13 +3,14 @@
 </span>
 
 <div class="main_component">
-    <h1>Welcome to my homepage!</h1>
+    <h1>Üdv az oldalon!</h1>
     <mat-form-field><mat-label for="email">Email: </mat-label><input matInput type="text" [formControl]="email" /></mat-form-field>
-    <mat-form-field><mat-label for="password">Password: </mat-label><input matInput type="password" [formControl]="password" /></mat-form-field>
+    <mat-form-field><mat-label for="password">Jelszó: </mat-label><input matInput type="password" [formControl]="password" /></mat-form-field>
     <span>
-        <span><button mat-raised-button color="primary" (click)="login()">Login</button></span>
-        <span><button mat-raised-button color="primary" [routerLink]="'/signup'">Sign Up</button></span>
+        <span><button mat-raised-button color="warn" (click)="login()">Belépés</button></span>
     </span>
-<!--  Async pipe -->
+  <p></p>
+  <h2>Még nincs felhasználód? <a routerLink="/signup">Regisztrálj itt!</a></h2>
+  <!--  Async pipe -->
 <!--  <p>{{loadingObservation | async}}</p>-->
 </div>
