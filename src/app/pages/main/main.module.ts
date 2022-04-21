@@ -9,21 +9,23 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatMenuModule} from "@angular/material/menu";
 
 
 @NgModule({
   declarations: [
     MainComponent
   ],
-  imports: [
-    CommonModule,
-    MainRoutingModule,
-    MatCardModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    ReactiveFormsModule
-  ]
+    imports: [
+        CommonModule,
+        MainRoutingModule,
+        MatCardModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatButtonModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MatMenuModule
+    ]
 })
 export class MainModule { }

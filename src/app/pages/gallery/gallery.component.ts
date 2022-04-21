@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {GalleryService} from "../../shared/services/gallery.service";
 import {Image} from "../../shared/models/Image";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Component({
   selector: 'app-gallery',
@@ -9,19 +10,26 @@ import {Image} from "../../shared/models/Image";
 })
 export class GalleryComponent implements OnInit {
 
-  galleryObject?: Array<Image>;
-  chosenImage?: Image;
+  constructor(private firestore: AngularFirestore) { }
 
-  constructor(private galleryService: GalleryService) { }
+  myArray: any[] = [];
 
   ngOnInit(): void {
-    this.galleryService.loadImageMeta('__credits.json').subscribe((data: Array<Image>) => {
-      this.galleryObject = data;
-    })
+    this.queryData();
   }
 
-  loadImage(imageObject: Image) {
-    this.chosenImage = imageObject;
+  queryData() {
+    this.firestore
+      .collection("recipes")
+      .get()
+      .subscribe((ss) => {
+        ss.docs.forEach((doc) => {
+          if (this.myArray.length <= 14)
+          {
+            this.myArray.push(doc.data());
+          }
+        });
+      });
   }
 
 }

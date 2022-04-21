@@ -1,22 +1,22 @@
 mat-card {
-  width: 60%;
-  height: 60%;
+  width: 80%;
+  height: 80%;
   align-self: center;
 }
 
 mat-card-header {
-  align-self: center;
+  align-self: auto;
   margin-top: 25px; //Mier nem mukodik
 }
 
 .div-flex {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 20px;
   margin-top: 20px;
   justify-content: left;
   text-align: left;
-  height: 40%;
+  height: 80%;
 }
 
 .main_component {
@@ -33,4 +33,5 @@ button {
 
 .input {
   align-self: center;
+  width: auto;
 }

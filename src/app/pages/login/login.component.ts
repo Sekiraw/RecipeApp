@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.loadingService.loadingWithPromise(this.email.value, this.password.value).then((_: boolean) => {
       console.log('This executed second');
       // myArr.push(1);
-      this.router.navigateByUrl('/main');
+      this.router.navigateByUrl('/gallery');
     }).catch(error => {
       console.error('Incorrect email or password!');
     }).finally(() => {

@@ -1,0 +1,40 @@
+.mat-card-big {
+  width: 80%;
+  height: 80%;
+  align-self: center;
+}
+
+.mat-card-small {
+  width: 30%;
+  height: 40%;
+  flex-direction: row;
+  text-align: left;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.div-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 80%;
+}
+
+.row {
+  width: 200px;
+}
+
+.main_component {
+  height: 100vh;
+}

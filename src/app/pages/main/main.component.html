@@ -11,7 +11,7 @@
 
         <ul>
           <li *ngFor='let doc of myArray'>
-            {{doc.field}}
+            {{doc.title}}
           </li>
         </ul>
 
@@ -32,13 +32,25 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content class="input">
-      <mat-form-field><mat-label for="title">Cím: </mat-label><input matInput type="text" [formControl]="title" placeholder="Tőtöttkáposzta"/></mat-form-field>
-      <p></p>
-      <mat-form-field><mat-label for="content">Tartalom: </mat-label><textarea matInput type="text" [formControl]="content" rows="4" cols="50"></textarea></mat-form-field>
-      <p></p>
-      <span>
-        <span><button mat-raised-button color="warn" (click)="submit()">Közzététel</button></span>
-    </span>
+      <form [formGroup]="this.form">
+        <mat-form-field><mat-label for="title">Cím: </mat-label><input matInput type="text" formControlName="title" placeholder="Tőtöttkáposzta"/></mat-form-field>
+        <p></p>
+        <mat-form-field><mat-label for="content">Tartalom: </mat-label><textarea matInput type="text" formControlName="content" rows="4" cols="50"></textarea></mat-form-field>
+        <p></p>
+        <select (change)="select($event)">
+          <option value="Előétel">Előétel</option>
+          <option value="Főétel">Főétel</option>
+          <option value="Desszert">Desszert</option>
+          <option value="Saláta">Saláta</option>
+        </select>
+
+        <br>
+<br>
+
+        <span>
+          <span><button mat-raised-button color="warn" (click)="submit()">Közzététel</button></span>
+      </span>
+      </form>
     </mat-card-content>
   </mat-card>
 </div>

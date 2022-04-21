@@ -1,2 +1,25 @@
-<app-list [galleryObjectInput]="galleryObject" (imageObjectEmitter)="loadImage($event)"></app-list>
-<app-viewer [imageInput]="chosenImage"></app-viewer>
+<!--<app-list [galleryObjectInput]="galleryObject" (imageObjectEmitter)="loadImage($event)"></app-list>-->
+<!--<app-viewer [imageInput]="chosenImage"></app-viewer>-->
+<ng-content></ng-content>
+
+<div class="main_component div-flex">
+    <mat-card-header class="container">
+      <mat-card-title>
+        Receptek felfedezése
+      </mat-card-title>
+    </mat-card-header>
+  <mat-card class="div-flex, mat-card-big">
+    <mat-card-content>
+          <span *ngFor='let doc of myArray'>
+              <mat-card class="mat-card-small">
+                <b>{{doc.title}}</b>
+                <br>
+                {{doc.content}}
+                <br>
+                <br>
+                <i>{{doc.type}}</i>
+              </mat-card>
+          </span>
+    </mat-card-content>
+  </mat-card>
+</div>
