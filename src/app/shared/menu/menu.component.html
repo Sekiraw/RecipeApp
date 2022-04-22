@@ -1,8 +1,20 @@
 <mat-nav-list>
   <div>
     <mat-icon>fastfood</mat-icon>
-    <span>OLDAL NEVE IDE</span>
+    <span>5 perces receptek</span>
   </div>
+  <a mat-list-item routerLink="/gallery" (click)="close()">
+  <mat-icon>collections</mat-icon>
+  <span>Felfedezés</span>
+</a>
+  <a mat-list-item routerLink="/main" (click)="close()" *ngIf="(loggedInUser)">
+    <mat-icon>home</mat-icon>
+    <span>Profil</span>
+  </a>
+  <a mat-list-item routerLink="/contact" (click)="close()">
+  <mat-icon>info</mat-icon>
+  <span>Információ</span>
+</a>
   <a mat-list-item routerLink="/login" (click)="close()" *ngIf="!(loggedInUser)">
     <mat-icon>login</mat-icon>
     <span>Belépés</span>
@@ -15,18 +27,6 @@
     <mat-icon>app_registration</mat-icon>
     <span>Regisztráció</span>
   </a>
-  <a mat-list-item routerLink="/main" (click)="close()">
-  <mat-icon>home</mat-icon>
-  <span>Főoldal</span>
-</a>
-  <a mat-list-item routerLink="/gallery" (click)="close()">
-  <mat-icon>collections</mat-icon>
-  <span>Felfedezés</span>
-</a>
-  <a mat-list-item routerLink="/contact" (click)="close()">
-  <mat-icon>info</mat-icon>
-  <span>Információ</span>
-</a>
 </mat-nav-list>
 
 <!--<select [(ngModel)]="currentPage" (change)="menuSwitch()">-->

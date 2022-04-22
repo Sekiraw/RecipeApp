@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {AuthService} from "../../shared/services/auth.service";
+import {DatePipe} from "@angular/common";
 
 @Component({
   selector: 'app-main',
@@ -25,16 +26,25 @@ export class MainComponent implements OnInit {
   email = "";
   uid = this.authService.getCurrentUser();
 
-  constructor(private firestore: AngularFirestore, private authService: AuthService) { }
+  currentDate: Date = new Date();
+  dateString: string | null = "";
+
+  constructor(private datePipe: DatePipe, private firestore: AngularFirestore, private authService: AuthService) { }
 
   submit() {
+
+    this.dateString = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd-hh-mm');
+
+    // if the dropdown menu was untouched pick the first element
     if (this.dropdown == "") {
       this.dropdown = "Előétel";
     }
+
     this.firestore.collection('recipes').add({
       "title": this.form.value.title,
       "content": this.form.value.content,
       "type": this.dropdown,
+      "date": this.dateString,
       "user": this.uid
     })
       .then(res => {
@@ -70,15 +80,13 @@ export class MainComponent implements OnInit {
     //   });
 
     this.firestore
-      .collection("recipes", ref => ref.where('user', '==', this.uid)).get().subscribe(a => {
-        console.log(a.size + " <- size");
-        this.myArray.push(a);
-        console.log(this.myArray);
-    }, error => {
-        console.log(error);
-    });
-
-
+      .collection("recipes", ref => ref.where('user', '==', this.uid))
+      .get()
+      .subscribe((ss) => {
+        ss.docs.forEach((doc) => {
+          this.myArray.push(doc.data());
+        });
+      });
     // this.email = this.authService.getCurrentUser();
   }
 

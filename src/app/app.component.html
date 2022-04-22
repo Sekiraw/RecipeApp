@@ -9,16 +9,16 @@
           <mat-icon>menu</mat-icon>
         </button>
       </div>
-      <div class="title">Mit főztem</div>
+      <div class="title">5 perces receptek</div>
       <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
         <span class="center_me">
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
+          <li><a routerLink="/gallery">Felfedezés </a></li>
+          <li *ngIf="(loggedInUser)"><a routerLink="/main">Profil </a></li>
+          <li><a routerLink="/contact">Információ</a></li>
           <li *ngIf="!(loggedInUser)"><a routerLink="/login">Belépés </a></li>
           <li *ngIf="(loggedInUser)"><a routerLink="/login" (click)="logout()">Kilépés </a></li>
           <li *ngIf="!(loggedInUser)"><a routerLink="/signup">Regisztráció </a></li>
-          <li><a routerLink="/main">Főoldal </a></li>
-          <li><a routerLink="/gallery">Felfedezés </a></li>
-          <li><a routerLink="/contact">Információ</a></li>
         </ul>
         </span>
       </div>

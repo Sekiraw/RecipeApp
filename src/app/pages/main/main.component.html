@@ -5,15 +5,20 @@
     <mat-card-header>
       <mat-card-title>
         <!-- insert stuff here  -->
-        <h3>Felhasználónév: {{uid}}</h3>
+        <h3>Felhasználó azonosítója: {{uid}}</h3>
         Saját receptjeim
 
 
-        <ul>
-          <li *ngFor='let doc of myArray'>
-            {{doc.title}}
-          </li>
-        </ul>
+          <span *ngFor='let doc of myArray'>
+            <mat-card class="mat-card-small">
+              <b>{{doc.title}}</b>
+                <br>
+                  {{doc.content}}
+              <br>
+                <br>
+                <i>{{doc.type}}</i>
+            </mat-card>
+          </span>
 
 
       </mat-card-title>
@@ -46,7 +51,8 @@
 
         <br>
 <br>
-
+        <p>Amennyiben a felhasználó azonosítója üres,<br>
+          válts oldalt és gyere vissza, mert a feltöltés nem lesz sikeres!</p>
         <span>
           <span><button mat-raised-button color="warn" (click)="submit()">Közzététel</button></span>
       </span>

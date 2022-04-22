@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, DatePipe} from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
@@ -26,6 +26,10 @@ import {MatMenuModule} from "@angular/material/menu";
         MatInputModule,
         ReactiveFormsModule,
         MatMenuModule
-    ]
+    ],
+  providers: [
+    DatePipe
+  ]
+
 })
 export class MainModule { }

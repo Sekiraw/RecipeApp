@@ -20,14 +20,11 @@ export class GalleryComponent implements OnInit {
 
   queryData() {
     this.firestore
-      .collection("recipes")
+      .collection("recipes", ref => ref.orderBy("date"))
       .get()
       .subscribe((ss) => {
         ss.docs.forEach((doc) => {
-          if (this.myArray.length <= 14)
-          {
-            this.myArray.push(doc.data());
-          }
+          this.myArray.push(doc.data());
         });
       });
   }
