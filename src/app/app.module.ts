@@ -19,6 +19,8 @@ import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { provideStorage,getStorage } from '@angular/fire/storage';
 import {AngularFireModule} from "@angular/fire/compat";
+import { UploadHelperPipe } from './shared/pipes/upload-helper.pipe';
+import { EmptyTypePipe } from './shared/pipes/empty-type.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import {AngularFireModule} from "@angular/fire/compat";
     // GalleryComponent,
     // ContactComponent,
     MenuComponent,
+    UploadHelperPipe,
+    EmptyTypePipe,
     // ListComponent,
     // ViewerComponent,
     // DateFormatPipe

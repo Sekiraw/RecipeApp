@@ -7,7 +7,7 @@
                 <input matInput type="text" formControlName="email" />
             </mat-form-field>
             <mat-form-field>
-                <mat-label for="password">Jelszó: </mat-label>
+                <mat-label for="password">Jelszó: (legalább 6 karakter)</mat-label>
               <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
                 <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
@@ -39,6 +39,7 @@
               </span>
             </div>
           <p></p>
+          <h3 style="color: red" *ngIf="(isError)">{{errorMsg}}</h3>
           <h2>Ha már van felhasználód <a routerLink="/login">lépj be itt!</a></h2>
         </form>
     </div>

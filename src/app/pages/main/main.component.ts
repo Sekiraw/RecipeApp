@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {AuthService} from "../../shared/services/auth.service";
 import {DatePipe} from "@angular/common";
+import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {FirebaseAppModule} from "@angular/fire/app";
+import * as firebase from 'firebase/compat';
+import {UploadService} from "../../shared/services/upload.service";
 
 @Component({
   selector: 'app-main',
@@ -26,38 +30,43 @@ export class MainComponent implements OnInit {
   email = "";
   uid = this.authService.getCurrentUser();
 
-  currentDate: Date = new Date();
-  dateString: string | null = "";
+  sikeresFeltolt: boolean = false;
 
-  constructor(private datePipe: DatePipe, private firestore: AngularFirestore, private authService: AuthService) { }
+  private changeLog: any;
 
-  submit() {
+  constructor(private firestore: AngularFirestore, private authService: AuthService, public auth: AngularFireAuth, private upl: UploadService) { }
 
-    this.dateString = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd-hh-mm');
-
-    // if the dropdown menu was untouched pick the first element
-    if (this.dropdown == "") {
-      this.dropdown = "Előétel";
-    }
-
-    this.firestore.collection('recipes').add({
-      "title": this.form.value.title,
-      "content": this.form.value.content,
-      "type": this.dropdown,
-      "date": this.dateString,
-      "user": this.uid
-    })
-      .then(res => {
-        console.log(res);
-        this.form.reset();
-      })
-      .catch(e => {
-        console.log(e);
-      })
+  deleteItem(title: string) {
+    // console.log(title);
+    // this.firestore
+    //   .collection("recipes", ref => ref.where('title', '==', title))
+    //   .doc("title").
+    //   .delete().then(a => {
+    //     console.log("Recipe deleted successfully", a);
+    // }).catch((error) => {
+    //   console.log("Can't delete recipe: ", error);
+    // });
   }
 
-  ngOnInit(): void {
+  // upload service
+  submit() {
+    this.upl.submit(
+      this.form.value.title,
+      this.form.value.content,
+      this.dropdown,
+      this.uid
+      )
+    this.sikeresFeltolt = this.upl.uploadSucc;
+    console.log(this.sikeresFeltolt)
+    this.queryData()
+  }
+
+  ngOnInit() {
     this.queryData();
+  }
+
+  ngOnDestroy() {
+    console.log("destroy");
   }
 
   select(event: any) {
@@ -67,17 +76,6 @@ export class MainComponent implements OnInit {
 
   queryData() {
     this.uid = this.authService.getCurrentUser();
-
-    // this.firestore.collection("test").where('user', '==', this.uid).get()
-    //   .then((querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //       // doc.data() is never undefined for query doc snapshots
-    //       console.log(doc.id, " => ", doc.data());
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.log("Error getting documents: ", error);
-    //   });
 
     this.firestore
       .collection("recipes", ref => ref.where('user', '==', this.uid))

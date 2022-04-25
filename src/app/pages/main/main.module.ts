@@ -10,6 +10,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
+import {UploadService} from "../../shared/services/upload.service";
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {MatMenuModule} from "@angular/material/menu";
         MatMenuModule
     ],
   providers: [
-    DatePipe
+    DatePipe,
+    UploadService
   ]
 
 })

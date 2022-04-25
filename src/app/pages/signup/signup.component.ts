@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {AuthService} from "../../shared/services/auth.service";
 import {Router} from "@angular/router";
@@ -12,6 +12,8 @@ import {Router} from "@angular/router";
 export class SignupComponent implements OnInit {
 
   hide = true;
+  isError = false;
+  errorMsg = "";
 
   signUpForm = new FormGroup({
     email: new FormControl(''),
@@ -23,18 +25,26 @@ export class SignupComponent implements OnInit {
     })
   });
 
-  constructor(private location: Location, private authService: AuthService, private router: Router) { }
-
-  ngOnInit(): void {
+  ngOnInit() {
   }
 
+  constructor(private location: Location, private authService: AuthService, private router: Router) { }
+
   onSubmit() {
-    console.log(this.signUpForm.value);
-    this.authService.signup(this.signUpForm.get('email')?.value, this.signUpForm.get('password')?.value).then(cred => {
-      this.router.navigateByUrl('/gallery');
-    }).catch(error => {
-      console.error(error);
-    })
+    if (this.signUpForm.value.password === this.signUpForm.value.rePassword && this.signUpForm.value.password.length >= 6) {
+      console.log(this.signUpForm.value);
+      this.authService.signup(this.signUpForm.get('email')?.value, this.signUpForm.get('password')?.value).then(cred => {
+        this.router.navigateByUrl('/gallery');
+      }).catch(error => {
+        console.error(error);
+        this.isError = true;
+        this.errorMsg = error;
+      })
+    }
+    else {
+      this.isError = true;
+      this.errorMsg = "A jelszavak nem egyeznek!";
+    }
   }
 
   goBack() {

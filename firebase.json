@@ -13,7 +13,7 @@
     },
     {
       "target": "week-04",
-      "public": "dist/week-04",
+      "public": "src/",
       "ignore": [
         "**/.*"
       ],
