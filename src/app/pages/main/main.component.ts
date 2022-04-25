@@ -2,10 +2,7 @@ import {Component, Input, OnInit, SimpleChanges} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat/firestore";
 import {AuthService} from "../../shared/services/auth.service";
-import {DatePipe} from "@angular/common";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {FirebaseAppModule} from "@angular/fire/app";
-import * as firebase from 'firebase/compat';
 import {UploadService} from "../../shared/services/upload.service";
 
 @Component({
@@ -30,6 +27,8 @@ export class MainComponent implements OnInit {
   email = "";
   uid = this.authService.getCurrentUser();
 
+  dataToDelete: unknown = "";
+
   sikeresFeltolt: boolean = false;
 
   private changeLog: any;
@@ -37,15 +36,22 @@ export class MainComponent implements OnInit {
   constructor(private firestore: AngularFirestore, private authService: AuthService, public auth: AngularFireAuth, private upl: UploadService) { }
 
   deleteItem(title: string) {
-    // console.log(title);
+    console.log(title);
     // this.firestore
-    //   .collection("recipes", ref => ref.where('title', '==', title))
-    //   .doc("title").
-    //   .delete().then(a => {
-    //     console.log("Recipe deleted successfully", a);
-    // }).catch((error) => {
-    //   console.log("Can't delete recipe: ", error);
-    // });
+    //   .collection("recipes", ref => ref.where('title', '==', title)).get()
+    //   .subscribe((ss) => {
+    //     ss.docs.forEach((doc) => {
+    //       this.dataToDelete = doc.data();
+    //       console.log(this.dataToDelete);
+    //     });
+    //   });
+
+      // .doc()
+      // .delete().then(a => {
+      //   console.log("Recipe deleted successfully", a);
+      // }).catch((error) => {
+      //   console.log("Can't delete recipe: ", error);
+      // });
   }
 
   // upload service
@@ -56,8 +62,6 @@ export class MainComponent implements OnInit {
       this.dropdown,
       this.uid
       )
-    this.sikeresFeltolt = this.upl.uploadSucc;
-    console.log(this.sikeresFeltolt)
     this.queryData()
   }
 

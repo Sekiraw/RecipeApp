@@ -35,6 +35,10 @@ import { EmptyTypePipe } from './shared/pipes/empty-type.pipe';
     // ViewerComponent,
     // DateFormatPipe
   ],
+  exports: [
+    EmptyTypePipe,
+    UploadHelperPipe
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -53,7 +57,10 @@ import { EmptyTypePipe } from './shared/pipes/empty-type.pipe';
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage())
   ],
-  providers: [],
+  providers: [
+    EmptyTypePipe,
+    UploadHelperPipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
