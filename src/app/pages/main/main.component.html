@@ -5,7 +5,7 @@
     <mat-card-header>
       <mat-card-title>
         <!-- insert stuff here  -->
-        <h3>Felhasználó azonosítója: {{uid}}</h3>
+        <h3 [ngStyle]="{'background-color':uid.length > 0 ? 'green' : 'red' }">Felhasználó azonosítója: {{uid}}</h3>
         Saját receptjeim
 
 
@@ -33,11 +33,9 @@
 
   <mat-card class="div-flex">
     <mat-card-header>
-      <mat-card-title>
-        Új recept feltöltése
-      </mat-card-title>
     </mat-card-header>
     <mat-card-content class="input">
+      <h1>Új recept feltöltése</h1>
       <form [formGroup]="this.form">
         <mat-form-field><mat-label for="title">Cím: </mat-label><input matInput type="text" formControlName="title" placeholder="Tőtöttkáposzta"/></mat-form-field>
         <p></p>
@@ -52,7 +50,7 @@
 
         <br>
 <br>
-        <p>Amennyiben a felhasználó azonosítója üres,<br>
+        <p>Amennyiben a felhasználó azonosítója üres, vagy piros háttere van<br>
           válts oldalt és gyere vissza, mert a feltöltés nem lesz sikeres!</p>
         <span>
           <span><button mat-raised-button color="warn" (click)="submit()">Közzététel</button></span>

@@ -13,15 +13,13 @@ export class UploadService {
   private currentDate: Date = new Date();
   private dateString: unknown = "";
 
-  constructor(private firestore: AngularFirestore, private emptyPipe: EmptyTypePipe, private datePipe: UploadHelperPipe) { }
+  constructor(private emptyPipe: EmptyTypePipe, private datePipe: UploadHelperPipe, private firestore: AngularFirestore) { }
 
   submit(title: string, content: string, type: string, user: string) {
 
     // Pipes
     this.dateString = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd-hh-mm');
-    if (type == ""){
-      type = "Előétel"
-    }
+    this.emptyPipe.transform(type);
 
     this.firestore.collection('recipes').add({
       "title": title,

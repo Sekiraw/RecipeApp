@@ -11,6 +11,7 @@ import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatMenuModule} from "@angular/material/menu";
 import {UploadService} from "../../shared/services/upload.service";
+import {FlexLayoutModule} from "@angular/flex-layout";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {UploadService} from "../../shared/services/upload.service";
         MatButtonModule,
         MatInputModule,
         ReactiveFormsModule,
-        MatMenuModule
+        MatMenuModule,
+        FlexLayoutModule
     ],
   providers: [
     DatePipe,

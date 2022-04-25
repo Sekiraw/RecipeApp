@@ -1,6 +1,6 @@
 <div class="main_component">
     <div class="div-flex">
-        <h1>Regisztráció</h1>
+        <h1 [ngStyle]="{'color': 'red', 'font-size': '24px', 'font-weight': 'bold'}">Regisztráció</h1>
         <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
             <mat-form-field>
                 <mat-label for="email">Email: </mat-label>
