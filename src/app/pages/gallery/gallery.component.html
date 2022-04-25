@@ -9,8 +9,12 @@
       </mat-card-title>
     </mat-card-header>
   <mat-card class="div-flex, mat-card-big">
+    <button mat-raised-button color="warn" (click)="queryData('Előétel')">Előétel</button>
+    <button mat-raised-button color="warn" (click)="queryData('Főétel')">Főétel</button>
+    <button mat-raised-button color="warn" (click)="queryData('Desszert')">Desszert</button>
+    <button mat-raised-button color="warn" (click)="queryData('Saláta')">Saláta</button>
     <mat-card-content>
-          <span *ngFor='let doc of myArray'>
+      <span *ngFor='let doc of myArray'>
               <mat-card class="mat-card-small">
                 <b>{{doc.title}}</b>
                 <br>

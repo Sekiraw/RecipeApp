@@ -21,7 +21,7 @@ export class UploadService {
     this.dateString = this.datePipe.transform(this.currentDate, 'yyyy-MM-dd-hh-mm');
     this.emptyPipe.transform(type);
 
-    this.firestore.collection('recipes').add({
+    this.firestore.collection('recipes').doc(title).set({
       "title": title,
       "content": content,
       "type": type,

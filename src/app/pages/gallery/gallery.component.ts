@@ -15,18 +15,32 @@ export class GalleryComponent implements OnInit {
   myArray: any[] = [];
 
   ngOnInit(): void {
-    this.queryData();
+    this.queryData("");
   }
 
-  queryData() {
-    this.firestore
-      .collection("recipes", ref => ref.orderBy("date"))
-      .get()
-      .subscribe((ss) => {
-        ss.docs.forEach((doc) => {
-          this.myArray.push(doc.data());
+  queryData(statement: string) {
+    this.myArray = [];
+    if (statement != ""){
+      this.firestore
+        .collection("recipes", ref => ref.where('type', '==', statement))
+        .get()
+        .subscribe((ss) => {
+          ss.docs.forEach((doc) => {
+            this.myArray.push(doc.data());
+          });
         });
-      });
+    }
+    else {
+      this.firestore
+        .collection("recipes", ref => ref.orderBy("date"))
+        .get()
+        .subscribe((ss) => {
+          ss.docs.forEach((doc) => {
+            this.myArray.push(doc.data());
+          });
+        });
+    }
+
   }
 
 }

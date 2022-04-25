@@ -4,6 +4,7 @@ import {AngularFirestore, AngularFirestoreCollection} from "@angular/fire/compat
 import {AuthService} from "../../shared/services/auth.service";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {UploadService} from "../../shared/services/upload.service";
+import {error} from "firebase-functions/lib/logger";
 
 @Component({
   selector: 'app-main',
@@ -37,21 +38,14 @@ export class MainComponent implements OnInit {
 
   deleteItem(title: string) {
     console.log(title);
-    // this.firestore
-    //   .collection("recipes", ref => ref.where('title', '==', title)).get()
-    //   .subscribe((ss) => {
-    //     ss.docs.forEach((doc) => {
-    //       this.dataToDelete = doc.data();
-    //       console.log(this.dataToDelete);
-    //     });
-    //   });
+    this.firestore
+      .collection("recipes").doc(title).delete().then(_ => {
+        console.log('Recept sikeres törlése!');
+    }).catch(error => {
+      console.error("Nem sikerült törölni: ", error);
+    })
 
-      // .doc()
-      // .delete().then(a => {
-      //   console.log("Recipe deleted successfully", a);
-      // }).catch((error) => {
-      //   console.log("Can't delete recipe: ", error);
-      // });
+    this.queryData();
   }
 
   // upload service
@@ -80,6 +74,7 @@ export class MainComponent implements OnInit {
 
   queryData() {
     this.uid = this.authService.getCurrentUser();
+    this.myArray = [];
 
     this.firestore
       .collection("recipes", ref => ref.where('user', '==', this.uid))

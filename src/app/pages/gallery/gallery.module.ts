@@ -32,7 +32,7 @@ import {FlexLayoutModule} from "@angular/flex-layout";
     MatCardModule,
     MatInputModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ]
 })
 export class GalleryModule { }
