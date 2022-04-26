@@ -1,7 +1,7 @@
 {
   "name": "week-04",
   "version": "0.0.0",
-  "main": "src/index.html",
+  "main": "dist/week-04/index.html",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

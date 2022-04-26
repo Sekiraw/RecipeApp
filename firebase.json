@@ -5,7 +5,7 @@
   "hosting": [
     {
       "target": "week-04",
-      "public": "dist/",
+      "public": "dist/week-04/",
       "ignore": [
         "firebase.json",
         "**/.*",
@@ -14,7 +14,7 @@
     },
     {
       "target": "week-04",
-      "public": "src/",
+      "public": "dist/week-04/",
       "ignore": [
         "**/.*"
       ],
