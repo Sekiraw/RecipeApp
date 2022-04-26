@@ -2,7 +2,7 @@
 
 Benne van egy excel file segítségként a pontozáshoz amiben leírtam mi van kész és ha nem triviális a holléte, adtam hozzá elérési útvonalat is.
 Az environments mappát cs-n csatolom majd.
-Bármi kérdésed van v2020.bohus.peter@gmail.com-on elérhető vagyok.
+Bármi kérdésed van v2020.bohus.peter@gmail.com -on elérhető vagyok.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
