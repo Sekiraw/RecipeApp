@@ -52,7 +52,7 @@ import { EmptyTypePipe } from './shared/pipes/empty-type.pipe';
     FlexLayoutModule,
     MatListModule,
     AngularFireModule.initializeApp(environment.firebase),
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
+    // provideFirebaseApp(() => initializeApp(environments.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
     provideStorage(() => getStorage())

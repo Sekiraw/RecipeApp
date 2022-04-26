@@ -14,10 +14,10 @@ export class GalleryService {
   constructor(private http: HttpClient) { }
 
   // loadImageMeta(metaUrl: string): Observable<Array<Image>> {
-  //   return this.http.get(environment.hostUrl + '/assets/' + metaUrl) as Observable<Array<Image>>;
+  //   return this.http.get(environments.hostUrl + '/assets/' + metaUrl) as Observable<Array<Image>>;
   // }
   //
   // loadImage(imageUrl: string) {
-  //   return this.http.get(environment.hostUrl + '/assets/' + imageUrl, {responseType: 'blob'});
+  //   return this.http.get(environments.hostUrl + '/assets/' + imageUrl, {responseType: 'blob'});
   // }
 }
