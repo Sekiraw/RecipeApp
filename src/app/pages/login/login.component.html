@@ -10,6 +10,7 @@
         <span><button mat-raised-button color="warn" (click)="login()">Belépés</button></span>
     </span>
   <p></p>
+  <h3 style="color: red" *ngIf="(isError)">{{errorMsg}}</h3>
   <h2>Még nincs felhasználód? <a routerLink="/signup">Regisztrálj itt!</a></h2>
   <!--  Async pipe -->
 <!--  <p>{{loadingObservation | async}}</p>-->

@@ -15,6 +15,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   email = new FormControl('');
   password = new FormControl('');
 
+  isError = false;
+  errorMsg = "";
+
   loadingSubscription?: Subscription;
   loadingObservation?: Observable<boolean>;
 
@@ -30,6 +33,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async login() {
+    this.isError = false
+    this.errorMsg = "";
     this.loading = true;
     // Promise
     let myArr: Array<number> = [];
@@ -38,18 +43,22 @@ export class LoginComponent implements OnInit, OnDestroy {
       // myArr.push(1);
       this.router.navigateByUrl('/gallery');
     }).catch(error => {
+      this.isError = true;
+      this.errorMsg = "Incorrect email or password!";
       console.error('Incorrect email or password!');
     }).finally(() => {
       console.log('finally');
     });
     console.log('This executed first');
-    console.log(myArr);
+    // console.log(myArr);
 
     this.authService.login(this.email.value, this.password.value).then(cred => {
       console.log(cred);
       this.router.navigateByUrl('/main');
       this.loading = false;
     }).catch(error => {
+      this.isError = true;
+      this.errorMsg = error.toString();
       console.log(error)
       this.loading = false;
     });
