@@ -1,5 +1,7 @@
 # ReceptApp Beadandó
 
+Link: https://recept-page.web.app
+
 Benne van egy excel file segítségként a pontozáshoz amiben leírtam mi van kész és ha nem triviális a holléte, adtam hozzá elérési útvonalat is.
 Az environments mappát cs-n csatolom majd.
 Bármi kérdésed van v2020.bohus.peter@gmail.com -on elérhető vagyok.
